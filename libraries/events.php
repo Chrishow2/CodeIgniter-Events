@@ -49,9 +49,13 @@ class Events {
 	 */
 	public static function register($event, array $callback)
 	{
-		$key = get_class($callback[0]).'::'.$callback[1];
-		self::$_listeners[$event][$key] = $callback;
-		self::log_message('debug', 'Events::register() - Registered "'.$key.' with event "'.$event.'"');
+		$functions = is_array($callback[1]) ? $callback[1] : []; 
+		foreach ($functions as $func) {		
+			$key = get_class($callback[0]).'::'.$func;
+
+			self::$_listeners[$event][$key] = [$callback[0], $func];
+			self::log_message('debug', 'Events::register() - Registered "'.$key.' with event "'.$event.'"');
+		}
 	}
 
 	// ------------------------------------------------------------------------

@@ -48,7 +48,7 @@ You can add a listener to an event with the register() function:
 
 The second parameter of register() is an array that is callable via [call_user_func()](http://us2.php.net/manual/en/function.call-user-func.php "call_user_func").
 
-The <code>method_name</code> parameter can be a single string or an array of strings
+The <code>method_name</code> parameter can be either a single string or an array of strings.
 
 You trigger an Event by calling the trigger() function:
 
